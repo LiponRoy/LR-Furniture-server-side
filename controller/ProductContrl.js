@@ -23,3 +23,18 @@ exports.ProductPost = asyncHandler(async (req, res, next) => {
 		newProduct,
 	});
 });
+
+// getting all product
+exports.GetAllProduct = asyncHandler(async (req, res, next) => {
+	const allProduct = await ProductModel.find();
+
+	if (!allProduct) {
+		return next(new ErrorHandler('product not found... ', 400));
+	}
+
+	res.status(200).json({
+		success: true,
+		allProduct,
+		count: allProduct.length,
+	});
+});
