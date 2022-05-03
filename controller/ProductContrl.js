@@ -40,6 +40,19 @@ exports.GetAllProduct = asyncHandler(async (req, res, next) => {
 });
 
 // get single product
+exports.GetSingleProduct = asyncHandler(async (req, res, next) => {
+	// const { name, description, stock } = req.body;
+	const SingleProduct = await ProductModel.findById(req.params.id);
+
+	if (!SingleProduct) {
+		return next(new ErrorHandler('product not found... ', 400));
+	}
+
+	res.status(200).json({
+		success: true,
+		SingleProduct,
+	});
+});
 
 // update product
 exports.UpdateProduct = asyncHandler(async (req, res, next) => {
@@ -59,4 +72,21 @@ exports.UpdateProduct = asyncHandler(async (req, res, next) => {
 		success: true,
 		updateProduct,
 	});
+});
+
+// delete product
+exports.DeleteProduct = asyncHandler(async (req, res, next) => {
+	// const { name, description, stock } = req.body;
+	const deleteProduct = await ProductModel.findById(req.params.id);
+
+	if (!deleteProduct) {
+		return next(new ErrorHandler('product not found... ', 400));
+	}
+	{
+		deleteProduct.remove();
+		res.status(200).json({
+			success: true,
+			massage: 'this product deleted successfuly',
+		});
+	}
 });
