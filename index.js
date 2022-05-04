@@ -11,6 +11,10 @@ const productRouteer = require('./Router/ProductRoute');
 const mongoDbConnect = require('./DB_connect/MongodbMe');
 // configuration dot env file
 dotenv.config({ path: 'config.env' });
+
+app.get('/', (req, res) => {
+	res.send('running LR Furniture ');
+});
 // middleware all
 // app.use(cors);
 app.use(bodyParser.json());
@@ -21,7 +25,8 @@ app.use(errorMiddleware);
 //connection with database with monggodb atlas and compass url
 mongoDbConnect();
 
+const port = process.env.PORT || 5000;
 // make server
-app.listen(process.env.PORT || 5000, () => {
-	console.log(`server is running on port ${process.env.Port}`);
+app.listen(port, () => {
+	console.log('server is running');
 });
