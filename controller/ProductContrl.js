@@ -4,7 +4,7 @@ const ErrorHandler = require('../middlewareAll/errorHendeler');
 //..........
 //............
 exports.ProductPost = asyncHandler(async (req, res, next) => {
-	const { name, description, price, quantity, supplier, imgUrl } = req.body;
+	const { name, description, price, quantity, supplier, user_email, imgUrl } = req.body;
 	const newProduct = await ProductModel.create({
 		name,
 		description,
