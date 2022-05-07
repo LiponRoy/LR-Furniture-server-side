@@ -15,6 +15,7 @@ dotenv.config({ path: 'config.env' });
 app.get('/', (req, res) => {
 	res.send('running LR Furniture ');
 });
+
 // middleware all
 // app.use(cors);
 app.use(bodyParser.json());

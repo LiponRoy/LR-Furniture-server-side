@@ -21,6 +21,10 @@ const ProductSchema = new mongoose.Schema({
 		type: String,
 		required: [true, 'please inter Product supplier name'],
 	},
+	user_email: {
+		type: String,
+		required: [true],
+	},
 	imgUrl: {
 		type: String,
 		required: [true, 'please inter your image url'],

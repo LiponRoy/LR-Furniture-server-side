@@ -11,6 +11,7 @@ exports.ProductPost = asyncHandler(async (req, res, next) => {
 		price,
 		quantity,
 		supplier,
+		user_email,
 		imgUrl,
 	});
 
